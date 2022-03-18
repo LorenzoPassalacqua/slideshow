@@ -1,7 +1,7 @@
-const prev = document.querySelector('.prev nav-btn');
-const next = document.querySelector('.next nav-btn');
-const images = document.querySelector('.carousel').children;
-const totalImages = images.length
+var prev = document.querySelector('.prev nav-btn');
+var next = document.querySelector('.next nav-btn');
+var images = document.querySelector('.carousel').children;
+var totalImages = images.length
 
 
 let index = 0;
@@ -14,7 +14,7 @@ prev.addEventListener('click', () => {
 
 
   function nextImage(direction) {
-    if(direction == 'next') {
+    if(direction == 'next nav-btn') {
       index++;  // increase by 1, Global variable
       if(index == totalImages) {
         index = 0;
