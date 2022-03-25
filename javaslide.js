@@ -1,34 +1,26 @@
-var prev = document.querySelector('.prev nav-btn');
-var next = document.querySelector('.next nav-btn');
-var images = document.querySelector('.carousel').children;
-var totalImages = images.length
+let slideindex = 1;
+showSlides(slideindex);
 
+function pushSlide(n){
+  showSlides(slideindex += n);
+}
 
-let index = 0;
-prev.addEventListener('click', () => {
-    nextImage('next');
-  })
-  next.addEventListener('click', () => {
-    nextImage('prev');
-  })
+function currentslide(n){
+  showSlides(slideindex = n)
+}
 
-
-  function nextImage(direction) {
-    if(direction == 'next nav-btn') {
-      index++;  // increase by 1, Global variable
-      if(index == totalImages) {
-        index = 0;
-      }
-    } else {
-      if(index == 0) {
-        index = totalImages - 1;
-      } else {
-        index--; // Backwards by 1
-      }
-    }
-    
-    for(let i = 0; i < images.length; i++) {
-      images[i].classList.remove('main');
-    }
-    images[index].classList.add('main');
+function showSlides(n){
+  let i;
+  let slides = document.getElementsByClassName("mySlide fade");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideindex = 1};
+  if (n < 1) {slideindex = slides.length};
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
+  for (i = 0; i < dots.length; i++){
+    dots[i].className = dots[i].className.replace("active", "");
+  }
+  slides[slideindex -1].style.display = "block";
+  dots[slideindex -1].className += " active";
+} console.log()
